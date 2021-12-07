@@ -30,7 +30,7 @@ for ($i = 0; $i < count($inputUri); $i++) {
             $link .= $_SERVER['HTTP_HOST'];
 
             // Append the requested resource location to the URL
-            $link .= substr($URL, 0, -9) . "index.html";
+            $link .= substr($URL, 0, -9) . "index.php";
 
             //
             header("location: $link");

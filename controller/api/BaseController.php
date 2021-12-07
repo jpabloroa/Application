@@ -33,6 +33,32 @@ class BaseController
     }
 
     /**
+     * 
+     */
+    protected function sendDefaultView()
+    {
+        //
+        if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+            $link = "https";
+        } else {
+            $link = "http";
+        }
+
+        // Here append the common URL characters.
+        $link .= "://";
+
+        // Append the host(domain name, ip) to the URL.
+        $link .= $_SERVER['HTTP_HOST'];
+
+        // Append the requested resource location to the URL
+        $link .= substr($_SERVER['REQUEST_URI'], 0, -9) . "/index.php";
+
+        //
+        header("location: $link");
+        exit;
+    }
+
+    /**
      * Send API output.
      *
      * @param mixed  $data
