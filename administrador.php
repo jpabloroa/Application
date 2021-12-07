@@ -15,15 +15,21 @@ for ($i = 0; $i < count($inputUri); $i++) {
                 $k++;
             }
         } else {
+
+            require PROJECT_ROOT_PATH . "/controller/api/UserController.php";
+
             $objFeedController = new UserController();
             $objFeedController->sendDefaultView();
         }
     }
 }
 
-require PROJECT_ROOT_PATH . "/controller/api/UserController.php";
+
 
 if (isset($parsedUri[0]) && $parsedUri[0] == "jagger") {
+
+    require PROJECT_ROOT_PATH . "/controller/api/UserController.php";
+
     $objFeedController = new UserController();
     if ($parsedUri[1] || isset($parsedUri[1])) {
         $objFeedController->{$parsedUri[0]}($parsedUri[1]);
