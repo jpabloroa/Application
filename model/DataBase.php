@@ -46,6 +46,11 @@ class Database
         return false;
     }
 
+    public function DataBase_nuevoCliente()
+    {
+
+    }
+
     private function executeStatement($query = "", $typeValue = "", $value = "")
     {
         try {

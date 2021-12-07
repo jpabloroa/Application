@@ -52,7 +52,6 @@ class BaseController
 
         // Append the requested resource location to the URL 
         $link .= $_SERVER['REQUEST_URI'];
-        //$link .= substr($_SERVER['REQUEST_URI'], 0, -17);
         echo "Redireccionando a $link";
 
         //

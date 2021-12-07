@@ -11,6 +11,11 @@ class UserModel extends Database
         );
     }
 
+    public function UserModel_nuevoCliente($limit = 100)
+    {
+        
+    }
+
 }
 
 class Cliente

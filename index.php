@@ -12,5 +12,6 @@
 </head>
 <body>
     <h1>Página de inicio</h1>
+    Camara<input type="file" accept="image/*" capture="camera">
 </body>
 </html>
