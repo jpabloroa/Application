@@ -1,7 +1,5 @@
 <?php
 
-require __DIR__ . "/config/bootstrap.php";
-
 $URL = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $inputUri = explode('/', $URL);
 
