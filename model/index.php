@@ -13,7 +13,7 @@ $link .= "://";
 $link .= $_SERVER['HTTP_HOST'];
 
 // Append the requested resource location to the URL
-$link .= substr($URL, 0, -9) . "index.html";
+$link .= substr($URL, 0, -9) . "/index.html";
 
 //
 header("location: $link");
