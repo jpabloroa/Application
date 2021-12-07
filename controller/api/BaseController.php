@@ -50,9 +50,10 @@ class BaseController
         // Append the host(domain name, ip) to the URL.
         $link .= $_SERVER['HTTP_HOST'];
 
-        // Append the requested resource location to the URL
+        // Append the requested resource location to the URL 
         //$link .= substr($_SERVER['REQUEST_URI'], 0, - (strlen($_SERVER["SCRIPT_NAME"]) - 1)) . "/";
         $link .= $_SERVER["SCRIPT_NAME"]."<br>";
+        $link .= $_SERVER["SCRIPT_FILENAME"]."<br>";
         //$link .= substr($_SERVER['REQUEST_URI'], 0, -17);
         echo $link;
 
