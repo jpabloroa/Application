@@ -69,15 +69,15 @@ class BaseController
         header_remove('Set-Cookie');
 
         if ($status < 200) {
-            $respuesta = 'HTTP/2.0 ' . $status . ' La solicitud ha sido recibida, permanece en proceso';
+            $respuesta = 'HTTP\2.0 ' . $status . ' La solicitud ha sido recibida, permanece en proceso';
         } else if ($status >= 200 && $status < 300) {
-            $respuesta = 'HTTP/2.0 ' . $status . ' La solicitud ha sido procesada exitosamente';
+            $respuesta = 'HTTP\2.0 ' . $status . ' La solicitud ha sido procesada exitosamente';
         } else if ($status >= 300 && $status < 400) {
-            $respuesta = 'HTTP/2.0 ' . $status . ' La solicitud se redireccionará';
+            $respuesta = 'HTTP\2.0 ' . $status . ' La solicitud se redireccionará';
         } else if ($status >= 400 && $status < 500) {
-            $respuesta = 'HTTP/2.0 ' . $status . ' La solicitud presenta un error';
+            $respuesta = 'HTTP\2.0 ' . $status . ' La solicitud presenta un error';
         } else if ($status >= 500) {
-            $respuesta = 'HTTP/2.0 ' . $status . ' La solicitud no pudo ser procesada con éxito, error del servidor';
+            $respuesta = 'HTTP\2.0 ' . $status . ' La solicitud no pudo ser procesada con éxito, error del servidor';
         }
 
         array_push($httpHeaders, $respuesta, 'Content-Type: application/json');

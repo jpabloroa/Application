@@ -24,18 +24,15 @@ for ($i = 0; $i < count($inputUri); $i++) {
     }
 }
 
-
+require PROJECT_ROOT_PATH . "/controller/api/UserController.php";
+$objFeedController = new UserController();
 
 if (isset($parsedUri[0]) && $parsedUri[0] == "jagger") {
-
-    require PROJECT_ROOT_PATH . "/controller/api/UserController.php";
-
-    $objFeedController = new UserController();
     if ($parsedUri[1] || isset($parsedUri[1])) {
         $objFeedController->{$parsedUri[0]}($parsedUri[1]);
     } else {
         $objFeedController->{$parsedUri[0]}();
     }
 } else {
-    exit;
+    $objFeedController->sendDefaultView();
 }
