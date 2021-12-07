@@ -6,7 +6,7 @@ $URL = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $inputUri = explode('/', $URL);
 
 echo "<h1>ey perra</h1>";
-/*
+
 for ($i = 0; $i < count($inputUri); $i++) {
     echo $inputUri[$i]."<br>";
     /*
@@ -40,8 +40,8 @@ for ($i = 0; $i < count($inputUri); $i++) {
             header("location: $link");
             exit;
         }
-    }
-}*/
+    }*/
+}
 
 /*
 require PROJECT_ROOT_PATH . "/controller/api/UserController.php";
