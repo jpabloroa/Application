@@ -16,10 +16,12 @@ for ($i = 0; $i < count($inputUri); $i++) {
             }
         } else {
 
+            echo "perra";/*
+
             require PROJECT_ROOT_PATH . "/controller/api/UserController.php";
 
             $objFeedController = new UserController();
-            $objFeedController->sendDefaultView();
+            $objFeedController->sendDefaultView();*/
         }
     }
 }
