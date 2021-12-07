@@ -5,11 +5,10 @@ require __DIR__ . "/config/bootstrap.php";
 $URL = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $inputUri = explode('/', $URL);
 
+echo "ey perra";
+
+/*
 for ($i = 0; $i < count($inputUri); $i++) {
-
-    echo "ey perra";
-
-    /*
     if ($inputUri[$i] == "index.php") {
         $k = 0;
         $j = $i + 1;
@@ -40,7 +39,7 @@ for ($i = 0; $i < count($inputUri); $i++) {
             header("location: $link");
             exit;
         }
-    }*/
+    }
 }
 
 require PROJECT_ROOT_PATH . "/controller/api/UserController.php";
@@ -55,7 +54,7 @@ if (isset($parsedUri[0]) && $parsedUri[0] == "root") {
     } else {
     }
 }
-
+*/
 ?>
 
 <!DOCTYPE html>
