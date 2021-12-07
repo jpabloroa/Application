@@ -52,6 +52,7 @@ class BaseController
 
         // Append the requested resource location to the URL
         $link .= substr($_SERVER['REQUEST_URI'], 0, - (strlen($_SERVER["SCRIPT_NAME"]) - 1)) . "/";
+        $link .= substr($_SERVER['REQUEST_URI'], 0, -17) . "/";
 
         //
         header("location: $link");
