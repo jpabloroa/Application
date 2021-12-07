@@ -1,4 +1,4 @@
 <?php
-
-header("location: " . PROJECT_ROOT_PATH . "/nuevo.php");
+header("location: " . __DIR__ . "/../index.php");
 exit;
+?>
