@@ -13,15 +13,18 @@
 </head>
 
 <body>
-    <h1>Página de inicio</h1>
-    <div id="reader" width="600px" height="600px"></div>
-    <script src="./dist/html5-qrcode.js">
+<h1>Página de inicio</h1>
+    <div id="reader" style="width:600px;height:600px;"></div>
+    <script src="https://unpkg.com/html5-qrcode">
         const html5QrCode = new Html5Qrcode( /* element id */ "reader");
         // File based scanning
         const fileinput = document.getElementById('qr-input-file');
+        console.log("Activado !");
         fileinput.addEventListener('change', e => {
+            console.log("Archivo cargado !");
             if (e.target.files.length == 0) {
-                // No file selected, ignore 
+                // No file selected, ignore
+                alert("No hay archivos");
                 return;
             }
 
@@ -30,22 +33,18 @@
             html5QrCode.scanFile(imageFile, true)
                 .then(decodedText => {
                     // success, use decodedText
+                    alert("Escaneado !");
                     console.log(decodedText);
                 })
                 .catch(err => {
                     // failure, handle it.
+                    alert("Error de escaneo");
                     console.log(`Error scanning file. Reason: ${err}`)
                 });
         });
-
-        // Note: Current public API `scanFile` only returns the decoded text. There is
-        // another work in progress API (in beta) which returns a full decoded result of
-        // type `QrcodeResult` (check interface in src/core.ts) which contains the
-        // decoded text, code format, code bounds, etc.
-        // Eventually, this beta API will be migrated to the public API.
     </script>
-    <!--<input type="file" id="qr-input-file" accept="image/*">-->
-    <input type="file" id="qr-input-file" accept="image/*" capture>
+    <input type="file" id="qr-input-file" accept="image/*">
+    <!--<input type="file" id="qr-input-file" accept="image/*" capture>-->
 </body>
 
 </html>
