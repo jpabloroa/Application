@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<h1>Página de inicio</h1>
+    <h1>Página de inicio</h1>
     <div id="reader" style="width:600px;height:600px;"></div>
     <script src="https://unpkg.com/html5-qrcode">
         const html5QrCode = new Html5Qrcode( /* element id */ "reader");
