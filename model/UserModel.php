@@ -128,7 +128,7 @@ class UserModel extends Database
             $sql = "UPDATE clientes SET ";
             $k = 0;
             foreach ($keys as $key) {
-                $sql .= $key . " = " . $params[$key];
+                $sql .= $key . " = `" . $params[$key] . "`";
                 if ($k <= count($keys) - 1) {
                     $sql .= ", ";
                 }
