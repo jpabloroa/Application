@@ -62,13 +62,13 @@ class UserModel extends Database
                 etnia,
                 estadoCivil,
                 escolaridad,
-                
+                colegioInstitucion,
                 estudiaActualmente,
-                
+                universidadInstitucion,
                 actividadEconomica,
                 ingresoMensual,
                 intereses
-            ) VALUES (now(),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+            ) VALUES (now(),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                 $params
             );
         } catch (Exception $e) {

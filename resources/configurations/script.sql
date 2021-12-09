@@ -16,9 +16,9 @@ CREATE TABLE `clientes` (
     `etnia` VARCHAR(20) NULL,
     `estadoCivil` VARCHAR(20) NULL,
     `escolaridad` VARCHAR(40) NULL,
-    `colegio-institucion` VARCHAR(40) NULL,
+    `colegioInstitucion` VARCHAR(40) NULL,
     `estudiaActualmente` BOOLEAN NULL DEFAULT TRUE,
-    `universidad-institucion` VARCHAR(40) NULL,
+    `universidadInstitucion` VARCHAR(40) NULL,
     `actividadEconomica` VARCHAR(20) NULL,
     `ingresoMensual` INT(8) NULL DEFAULT 0,
     `intereses` VARCHAR(100)
