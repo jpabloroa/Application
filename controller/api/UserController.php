@@ -17,6 +17,7 @@ class UserController extends BaseController
                         $intLimit = $arrQueryStringParams['limit'];
                     }
 
+                    $columna = "";
                     if (isset($arrQueryStringParams['columna']) && $arrQueryStringParams['columna']) {
                         $columna = $arrQueryStringParams['columna'];
                     }
