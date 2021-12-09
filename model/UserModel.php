@@ -7,7 +7,7 @@ class UserModel extends Database
     {
         if (isset($parametros) && count($parametros) >= 1) {
 
-            if (!isset($parametros["columna"]) && !$parametros["columna"] || $parametros == "") {
+            if (!isset($parametros["columna"]) && !$parametros["columna"] || $parametros["columna"] == "") {
                 $columna = "cedula";
             }
 
