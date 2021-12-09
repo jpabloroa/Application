@@ -26,8 +26,9 @@ class UserModel extends Database
             );
         } else {
 
-            if (!isset($parametros["columna"]) && !$parametros["columna"]) {
-                $columna = "fechaDeCreacion";
+            $columna = "fechaDeCreacion";
+            if (isset($parametros["columna"]) && $parametros["columna"] != "") {
+                $columna = $parametros["columna"];
             }
 
             return $this->select(
