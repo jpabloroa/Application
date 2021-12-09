@@ -129,7 +129,7 @@ class UserModel extends Database
             $k = 0;
             foreach ($keys as $key) {
                 $sql .= $key . " = `" . $params[$key] . "`";
-                if ($k <= count($keys) - 1) {
+                if ($k <= count($keys) - 2) {
                     $sql .= ", ";
                 }
                 $k++;
