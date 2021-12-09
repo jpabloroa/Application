@@ -42,7 +42,7 @@ class Database
             switch ($params["nombreTabla"]) {
                 case "clientes":
                     $stmt->bind_param(
-                        "isssssssssssssbssss",
+                        "isssssssiisssisis",
                         $params["cedula"],
                         $params["nombres"],
                         $params["apellidos"],
@@ -56,9 +56,9 @@ class Database
                         $params["etnia"],
                         $params["estadoCivil"],
                         $params["escolaridad"],
-                        $params["colegio-institucion"],
+                        //$params["colegio-institucion"],
                         $params["estudiaActualmente"],
-                        $params["universidad-institucion"],
+                        //$params["universidad-institucion"],
                         $params["actividadEconomica"],
                         $params["ingresoMensual"],
                         $params["intereses"]
