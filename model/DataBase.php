@@ -111,7 +111,7 @@ class Database
             $stmt = $this->connection->prepare($query);
 
             if ($stmt === false) {
-                throw new Exception("No es posible ejecutar la sentencia: " . $query);
+                throw new Exception("No es posible ejecutar la sentencia: " . $query . " Detalles del error: " . $this->connection->error);
             }
 
             $stmt->execute();
