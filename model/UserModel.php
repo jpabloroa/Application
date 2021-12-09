@@ -62,9 +62,9 @@ class UserModel extends Database
                 etnia,
                 estadoCivil,
                 escolaridad,
-                colegio-institucion,
+                /*colegio-institucion,*/
                 estudiaActualmente,
-                universidad-institucion,
+                /*universidad-institucion,*/
                 actividadEconomica,
                 ingresoMensual,
                 intereses
