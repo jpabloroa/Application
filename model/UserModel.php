@@ -5,7 +5,7 @@ class UserModel extends Database
 {
     public function getUsers($tabla = "", $parametros = [], $limit = 100)
     {
-        if (isset($parametros["clave"]) && count($parametros) >= 1) {
+        if (isset($parametros["clave"]) && $parametros["clave"] != "") {
 
             if (!isset($parametros["columna"]) && !$parametros["columna"] || $parametros["columna"] == "") {
                 $columna = "cedula";

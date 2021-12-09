@@ -17,12 +17,17 @@ class UserController extends BaseController
                         $intLimit = $arrQueryStringParams['limit'];
                     }
 
+                    $clave = "";
+                    if (isset($UrlPaths[1]) && $UrlPaths[1]) {
+                        $clave = $UrlPaths[1];
+                    }
+
                     $columna = "";
                     if (isset($arrQueryStringParams['columna']) && $arrQueryStringParams['columna']) {
                         $columna = $arrQueryStringParams['columna'];
                     }
 
-                    $arrUsers = $userModel->getUsers($UrlPaths[0], ["columna" => $columna, "clave" => $UrlPaths[1]], $intLimit);
+                    $arrUsers = $userModel->getUsers($UrlPaths[0], ["columna" => $columna, "clave" => $clave], $intLimit);
                     $this->sendOutput(200, $arrUsers, [], 'Se cargó(aron) ' . count($arrUsers) . ' cliente(s)');
                 } catch (Error $e) {
                     $this->sendOutput(500, [], ['Internal Server Error - ' . $e->getMessage()], 'Detalles: ' . $e->getMessage());
