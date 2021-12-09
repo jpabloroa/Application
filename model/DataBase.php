@@ -33,7 +33,66 @@ class Database
     public function insert($query = "", $params = [])
     {
         try {
-            $stmt = $this->executeStatement($query, $params);
+            $stmt = $this->connection->prepare($query);
+
+            if ($stmt === false) {
+                throw new Exception("No es posible ejecutar la sentencia: " . $query);
+            }
+
+            switch ($params["nombreTabla"]) {
+                case "clientes":
+                    $stmt->bind_param(
+                        "isssssssssssssbssss",
+                        $params["cedula"],
+                        $params["nombres"],
+                        $params["apellidos"],
+                        $params["correo"],
+                        $params["celular"],
+                        $params["direccionDeResidencia"],
+                        $params["fechaDeNacimiento"],
+                        $params["lugarDeNacimiento"],
+                        $params["sexo"],
+                        $params["estatura"],
+                        $params["etnia"],
+                        $params["estadoCivil"],
+                        $params["escolaridad"],
+                        $params["colegio-institucion"],
+                        $params["estudiaActualmente"],
+                        $params["universidad-institucion"],
+                        $params["actividadEconomica"],
+                        $params["ingresoMensual"],
+                        $params["intereses"]
+                    );
+                    break;
+                case "visitas":
+                    $stmt->bind_param(
+                        "ssisis",
+                        $params["establecimiento"],
+                        $params["tematica"],
+                        $params["cedula"],
+                        $params["consumo"],
+                        $params["calificacion"],
+                        $params["horaDeSalida"]
+                    );
+                    break;
+                case "clientes":
+                    $stmt->bind_param(
+                        "issssssss",
+                        $params["cedula"],
+                        $params["nombres"],
+                        $params["apellidos"],
+                        $params["correo"],
+                        $params["celular"],
+                        $params["fechaDeNacimiento"],
+                        $params["permisos"],
+                        $params["usuario"],
+                        $params["clave"]
+                    );
+                    break;
+            }
+
+            $stmt->execute();
+
             if ($stmt == TRUE) {
                 return $params;
             } else {
@@ -46,9 +105,27 @@ class Database
         return false;
     }
 
-    public function DataBase_nuevoCliente()
+    public function update($query)
     {
+        try {
+            $stmt = $this->connection->prepare($query);
 
+            if ($stmt === false) {
+                throw new Exception("No es posible ejecutar la sentencia: " . $query);
+            }
+
+            $stmt->execute();
+
+            if ($stmt == TRUE) {
+                return $stmt;
+            } else {
+                return null;
+            }
+            $stmt->close();
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
+        return false;
     }
 
     private function executeStatement($query = "", $typeValue = "", $value = "")

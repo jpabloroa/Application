@@ -16,11 +16,13 @@
 <body>
     <h1>Página de inicio</h1>
     <div id="reader" style="width:600px;height:600px;"></div>
+    <input type="file" id="qr-input-file" accept="image/*">
+    <!--<input type="file" id="qr-input-file" accept="image/*" capture>-->
     <script>
         const html5QrCode = new Html5Qrcode( /* element id */ "reader");
         // File based scanning
-        const fileinput = document.getElementById('qr-input-file');
         console.log("Activado !");
+        const fileinput = document.getElementById('qr-input-file');
         fileinput.addEventListener('change', e => {
             console.log("Archivo cargado !");
             if (e.target.files.length == 0) {
@@ -44,8 +46,6 @@
                 });
         });
     </script>
-    <input type="file" id="qr-input-file" accept="image/*">
-    <!--<input type="file" id="qr-input-file" accept="image/*" capture>-->
 </body>
 
 </html>

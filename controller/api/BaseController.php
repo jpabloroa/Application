@@ -6,7 +6,7 @@ class BaseController
      */
     public function __call($name, $arguments)
     {
-        $this->sendDefaultView();
+        $this->sendOutput(404, [], [], "Recurso no encontrado");
     }
 
     /**
