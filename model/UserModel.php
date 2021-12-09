@@ -134,7 +134,7 @@ class UserModel extends Database
                 }
                 $k++;
             }
-            $sql .= " WHERE cedula = `$clave`";
+            $sql .= " WHERE cedula = $clave";
 
             $params["nombreTabla"] = "clientes";
 
