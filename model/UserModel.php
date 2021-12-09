@@ -134,7 +134,7 @@ class UserModel extends Database
                 }
                 $k++;
             }
-            $sql .= " WHERE cedula = $clave";
+            $sql .= " WHERE cedula = `$clave`";
 
             $params["nombreTabla"] = "clientes";
 
@@ -151,13 +151,13 @@ class UserModel extends Database
             $sql = "UPDATE visitas SET ";
             $k = 0;
             foreach ($keys as $key) {
-                $sql .= $key . " = " . $params[$key];
+                $sql .= $key . " = `" . $params[$key]."`";
                 if ($k <= count($keys) - 1) {
                     $sql .= ", ";
                 }
                 $k++;
             }
-            $sql .= " WHERE cedula = $clave";
+            $sql .= " WHERE cedula = `$clave`";
 
             $params["nombreTabla"] = "visitas";
 
@@ -174,13 +174,13 @@ class UserModel extends Database
             $sql = "UPDATE equipo SET ";
             $k = 0;
             foreach ($keys as $key) {
-                $sql .= $key . " = " . $params[$key];
+                $sql .= $key . " = `" . $params[$key]."`";
                 if ($k <= count($keys) - 1) {
                     $sql .= ", ";
                 }
                 $k++;
             }
-            $sql .= " WHERE usuario = $clave";
+            $sql .= " WHERE usuario = `$clave`";
 
             $params["nombreTabla"] = "equipo";
 
