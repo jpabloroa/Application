@@ -31,7 +31,7 @@ class UserModel extends Database
             }
 
             return $this->select(
-                "SELECT * FROM $tabla ORDER BY " . $parametros["columna"] . " ASC LIMIT ?",
+                "SELECT * FROM $tabla ORDER BY $columna ASC LIMIT ?",
                 ["i", $limit]
             );
         }
