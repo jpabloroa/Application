@@ -14,6 +14,9 @@
 </head>
 
 <body>
+    <?php
+    echo "primero que nada, primero que todo";
+    ?>
     <h1>Página de inicio</h1>
     <div id="reader" style="width:600px;height:600px;"></div>
     <input type="file" id="qr-input-file" accept="image/*">
