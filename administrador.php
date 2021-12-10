@@ -56,7 +56,9 @@ if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
     //
     parse_str($_SERVER['QUERY_STRING'], $urlQuery);
 
-    echo $urlQuery["key"];
+    $queryString = $urlQuery["key"];
+    $UserCredentials = explode(":", $queryString);
+    echo $UserCredentials[0];
 
     /*
     //
