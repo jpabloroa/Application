@@ -1,5 +1,5 @@
-CREATE DATABASE `JAGGERBEATS`;
-USE `JAGGERBEATS`;
+CREATE DATABASE `jaggerbeats`;
+USE `jaggerbeats`;
 CREATE TABLE `clientes` (
     `fechaDeCreacion` DATE NOT NULL,
     `codigoConteo` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
