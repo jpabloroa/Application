@@ -56,11 +56,6 @@ if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
     //
     parse_str($_SERVER['QUERY_STRING'], $urlQuery);
 
-    $queryString = $urlQuery["key"];
-    $UserCredentials = explode(":", $queryString);
-    echo $UserCredentials[0];
-
-    /*
     //
     if (isset($urlQuery["key"]) && $urlQuery["key"]) {
 
@@ -80,5 +75,5 @@ if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
     } else {
         $objFeedController = new UserController();
         $objFeedController->sendOutput(400, [], ["Bad Request"], "");
-    }*/
+    }
 }
