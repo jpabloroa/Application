@@ -1,4 +1,3 @@
-<html><body><h1>Perico</h1></body></html>
 <?php
 
 require __DIR__ . "/config/bootstrap.php";
