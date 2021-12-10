@@ -39,15 +39,19 @@ $objFeedController = new UserController();
 
 echo "no hay error lluego de crer el objeto";
 
-if (isset($parsedUri[0]) && $parsedUri[0]) {
+if (isset($parsedUri[0]) && $parsedUri[0] != null) {
     /*if ($parsedUri[1] || isset($parsedUri[1])) {
         $objFeedController->{$parsedUri[0]}($parsedUri[1]);
     } else {
         $objFeedController->{$parsedUri[0]}();
     }*/
-    echo "no hay error al disparar httpMethod";
-    $objFeedController->httpMethod($parsedUri);
+    try {
+
+        $objFeedController->httpMethod($parsedUri);
+        echo "no hay error al disparar httpMethod";
+    } catch (Exception $e) {
+        echo "<br>error untrakeado! detalles:" . $e->getMessage();
+    }
 } else {
     $objFeedController->sendDefaultView();
 }
-?>
