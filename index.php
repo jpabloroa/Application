@@ -18,7 +18,7 @@
     echo "primero que nada, primero que todo";
     ?>
     <h1>Página de inicio</h1>
-    <div id="reader" style="width:200px;height:200px;"></div>
+    <div id="reader" style="width:200px;height:auto;"></div>
     <input type="file" id="qr-input-file" accept="image/*">
     <!--<input type="file" id="qr-input-file" accept="image/*" capture>-->
     <script>
