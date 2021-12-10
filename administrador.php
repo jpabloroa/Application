@@ -53,11 +53,12 @@ if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
 
     require PROJECT_ROOT_PATH . "/controller/api/UserController.php";
 
-    echo $_SERVER['QUERY_STRING'];
-    /*
     //
-    $urlQuery = $_SERVER['QUERY_STRING'];
+    parse_str($_SERVER['QUERY_STRING'], $urlQuery);
 
+    echo $urlQuery["key"];
+
+    /*
     //
     if (isset($urlQuery["key"]) && $urlQuery["key"]) {
 
