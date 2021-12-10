@@ -136,9 +136,8 @@ class Database
             }
 
             $stmt->execute();
-            $stmt->close();
 
-            return $this->connection->affected_rows;
+            return $stmt;
         } catch (Exception $e) {
             throw new Exception($e->getMessage());
         }
