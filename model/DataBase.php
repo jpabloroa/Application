@@ -111,7 +111,7 @@ class Database
             }
 
             $stmt->execute();
-            $stmt->close();
+            //$stmt->close();
 
             return $this->connection->affected_rows;
         } catch (Exception $e) {
