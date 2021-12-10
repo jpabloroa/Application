@@ -28,13 +28,14 @@ class UserController extends BaseController
                     } else {
 
                         //
+                        $_usuarioROOT = "root";
                         $_claveROOT = "Nad95037*Cspor009";
 
                         //
-                        if ($Credentials["password"] == $_claveROOT) {
+                        if ($Credentials["user"] == $_usuarioROOT && $Credentials["password"] == $_claveROOT) {
 
                             //
-                            return $Credentials["user"];
+                            return $_usuarioROOT;
                         }
 
                         //
