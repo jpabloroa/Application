@@ -30,7 +30,7 @@ class UserController extends BaseController
                     $arrUsers = $userModel->getUsers($UrlPaths[0], ["columna" => $columna, "clave" => $clave], $intLimit);
 
                     if (count($arrUsers) >= 0) {
-                        $this->sendOutput(200, $arrUsers, [], 'Se cargó(aron) ' . count($arrUsers) . ' cliente(s)');
+                        $this->sendOutput(200, $arrUsers, [], 'Se cargar ' . count($arrUsers) . ' clientes');
                     } else {
                         $this->sendOutput(204, $arrUsers, ["No content"], 'No existen registros bajo el requerimiento /' . $UrlPaths[0] . "/" . $clave);
                     }
@@ -60,7 +60,7 @@ class UserController extends BaseController
                     }
 
                     if ($arrUsers >= 0) {
-                        $this->sendOutput(201, $data, ["Entities created succesfully"], 'Se insertó(aron) ' . $arrUsers . ' registro(s) en el entorno ' . $path);
+                        $this->sendOutput(201, $data, ["Entities created succesfully"], 'Se agregaron ' . $arrUsers . ' registros en el entorno ' . $path);
                     } else {
                         $this->sendOutput(400, [], ["Bad Request"], "Error del requerimiento en el entorno $path");
                     }
