@@ -33,6 +33,7 @@ class BaseController
     }
 
     /**
+     * Send index.php to user
      * 
      */
     protected function sendDefaultView()
@@ -62,8 +63,10 @@ class BaseController
     /**
      * Send API output.
      *
-     * @param mixed  $data
-     * @param string $httpHeader
+     * @param int $status
+     * @param array  $data
+     * @param array $httpHeader
+     * @param string $info
      */
     protected function sendOutput($status = 0, $datos = [], $httpHeaders = [], $info = '')
     {

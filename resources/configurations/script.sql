@@ -2,7 +2,7 @@ CREATE DATABASE `JAGGERBEATS`;
 USE `JAGGERBEATS`;
 CREATE TABLE `clientes` (
     `fechaDeCreacion` DATE NOT NULL,
-    `codigoConteo` INT NULL AUTO_INCREMENT PRIMARY KEY,
+    `codigoConteo` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `cedula` INT(15) NOT NULL UNIQUE KEY,
     `nombres` VARCHAR(30) NOT NULL,
     `apellidos` VARCHAR(30) NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE `clientes` (
 ) ENGINE = InnoDB CHARSET = utf8 COLLATE utf8_unicode_ci;
 CREATE TABLE `visitas`(
     `fechaDeCreacion` DATE NOT NULL,
-    `codigoConteo` INT NULL AUTO_INCREMENT PRIMARY KEY,
+    `codigoConteo` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `establecimiento` VARCHAR(20) NOT NULL,
     `tematica` VARCHAR(20) NULL,
     `cedula` INT(15) NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE `visitas`(
     `horaDeSalida` TIME NULL
 ) ENGINE = InnoDB CHARSET = utf8 COLLATE utf8_unicode_ci;
 CREATE TABLE `equipo`(
-    `codigoConteo` INT NULL AUTO_INCREMENT PRIMARY KEY,
+    `codigoConteo` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `cedula` INT(15) NOT NULL UNIQUE KEY,
     `nombres` VARCHAR(30) NOT NULL,
     `apellidos` VARCHAR(30) NOT NULL,

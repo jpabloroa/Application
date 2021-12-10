@@ -2,12 +2,24 @@
 class UserController extends BaseController
 {
 
+    /**
+     * Handle HTTP requests
+     * 
+     * @param array $UrlPaths
+     */
     public function httpMethod($UrlPaths = [])
     {
         $requestMethod = $_SERVER["REQUEST_METHOD"];
         $arrQueryStringParams = $this->getQueryStringParams();
 
         switch (strtoupper($requestMethod)) {
+
+                /**
+                 * To <code>GET</code> method
+                 * 
+                 * @path /{$resource}/{$filter.optional}
+                 * @return json $result
+                 */
             case 'GET':
                 try {
                     $userModel = new UserModel();
@@ -38,6 +50,14 @@ class UserController extends BaseController
                     $this->sendOutput(500, [], ['Internal Server Error - ' . $e->getMessage()], 'Detalles: ' . $e->getMessage());
                 }
                 break;
+
+                /**
+                 * To <code>POST</code> method
+                 * 
+                 * @path /{$resource}/
+                 * @param json $object
+                 * @return json $result
+                 */
             case "POST":
                 try {
                     $userModel = new UserModel();
@@ -68,6 +88,14 @@ class UserController extends BaseController
                     $this->sendOutput(500, [], ['Internal Server Error - ' . $e->getMessage()], 'Detalles: ' . $e->getMessage());
                 }
                 break;
+
+                /**
+                 * To <code>PUT</code> method
+                 * 
+                 * @path /{$resource}/{parameter}
+                 * @param json $object
+                 * @return json $result
+                 */
             case "PUT":
                 try {
                     $userModel = new UserModel();
@@ -99,17 +127,26 @@ class UserController extends BaseController
                     $this->sendOutput(500, [], ['Internal Server Error - ' . $e->getMessage()], 'Detalles: ' . $e->getMessage());
                 }
                 break;
+
+                /**
+                 * To <code>DELETE</code> method
+                 * 
+                 * @path /{$resource}/{$parameter}
+                 */
             case "DELETE":
                 try {
                     $userModel = new UserModel();
 
                     $path = $UrlPaths[0];
-                    $columna = $UrlPaths[1];
-                    $parametro = $UrlPaths[2];
 
-                    if (!isset($parametro) || !$parametro){
-                        $parametro = $columna;
-                        $columna = "cedula";
+                    if (isset($UrlPaths[1]) && $UrlPaths[1]) {
+                        if (!isset($UrlPaths[2]) && !$UrlPaths[2]) {
+                            $columna = "cedula";
+                            $parametro = $UrlPaths[1];
+                        } else {
+                            $columna = $UrlPaths[1];
+                            $parametro = $UrlPaths[2];
+                        }
                     }
 
                     $arrUsers = $userModel->_eliminarRegistro($path, $columna, $parametro);
