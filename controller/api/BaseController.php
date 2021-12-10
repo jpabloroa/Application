@@ -70,8 +70,10 @@ class BaseController
      */
     protected function sendOutput($status = 0, $datos = [], $httpHeaders = [], $info = '')
     {
+        //
         header_remove('Set-Cookie');
 
+        //
         if ($status < 200) {
             $respuesta = 'HTTP\2.0 ' . $status . ' La solicitud ha sido recibida, permanece en proceso';
         } else if ($status >= 200 && $status < 300) {
@@ -84,16 +86,20 @@ class BaseController
             $respuesta = 'HTTP\2.0 ' . $status . ' La solicitud no pudo ser procesada con éxito, error del servidor';
         }
 
+        //
         array_push($httpHeaders, $respuesta, 'Content-Type: application/json');
 
+        //
         if (is_array($httpHeaders) && count($httpHeaders)) {
             foreach ($httpHeaders as $httpHeader) {
                 header($httpHeader);
             }
         }
 
+        //
         $objecto = (object)['respuesta' => $respuesta, 'estado' => $status, 'datos' => $datos, 'info' => $info];
 
+        //
         echo json_encode($objecto);
         exit;
     }
