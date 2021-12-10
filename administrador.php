@@ -37,3 +37,4 @@ if (isset($parsedUri[0]) && $parsedUri[0]) {
 } else {
     $objFeedController->sendDefaultView();
 }
+?>
