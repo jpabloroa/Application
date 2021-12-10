@@ -30,7 +30,7 @@ class UserController extends BaseController
                     $arrUsers = $userModel->getUsers($UrlPaths[0], ["columna" => $columna, "clave" => $clave], $intLimit);
 
                     if (count($arrUsers) >= 0) {
-                        $this->sendOutput(200, $arrUsers, [], 'Se cargar ' . count($arrUsers) . ' clientes');
+                        $this->sendOutput(200, $arrUsers, [], 'Se cargan ' . count($arrUsers) . ' clientes');
                     } else {
                         $this->sendOutput(204, $arrUsers, ["No content"], 'No existen registros bajo el requerimiento /' . $UrlPaths[0] . "/" . $clave);
                     }
