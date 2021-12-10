@@ -50,6 +50,8 @@ if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
     }
 } else {
 
+    require PROJECT_ROOT_PATH . "/controller/api/UserController.php";
+
     //
     $urlQuery = $_SERVER['QUERY_STRING'];
 
