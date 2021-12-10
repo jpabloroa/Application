@@ -60,17 +60,23 @@ if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
     if (isset($urlQuery["key"]) && $urlQuery["key"]) {
 
         //
-        $queryString = $urlQuery["key"];
-        $UserCredentials = explode(":", $queryString);
         $objFeedController = new UserController();
-        $user = $objFeedController->validateCredentials($UserCredentials);
 
         //
-        if (isset($user) && $user) {
-            $_SESSION["userControl"] = $user;
-        } else {
-            $objFeedController = new UserController();
-            $objFeedController->sendOutput(401, [], ["Unauthorized"], "");
+        try {
+            //
+            $queryString = $urlQuery["key"];
+            $UserCredentials = explode(":", $queryString);
+            $user = $objFeedController->validateCredentials($UserCredentials);
+
+            //
+            if (isset($user) && $user) {
+                $_SESSION["userControl"] = $user;
+            } else {
+                $objFeedController->sendOutput(401, [], ["Unauthorized"], "");
+            }
+        } catch (Exception $e) {
+            $objFeedController->sendOutput(400, [], ["Bad Request","An error has ocurred during login"], "");
         }
     } else {
         $objFeedController = new UserController();
