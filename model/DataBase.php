@@ -92,9 +92,10 @@ class Database
             }
 
             $stmt->execute();
+            $affected = $this->connection->affected_rows;
             $stmt->close();
 
-            return $this->connection->affected_rows;
+            return $affected;
         } catch (Exception $e) {
             throw new Exception($e->getMessage());
         }
@@ -111,9 +112,10 @@ class Database
             }
 
             $stmt->execute();
-            //$stmt->close();
+            $affected = $this->connection->affected_rows;
+            $stmt->close();
 
-            return $this->connection->affected_rows;
+            return $affected;
         } catch (Exception $e) {
             throw new Exception($e->getMessage());
         }

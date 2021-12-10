@@ -28,7 +28,12 @@ class UserController extends BaseController
                     }
 
                     $arrUsers = $userModel->getUsers($UrlPaths[0], ["columna" => $columna, "clave" => $clave], $intLimit);
-                    $this->sendOutput(200, $arrUsers, [], 'Se cargó(aron) ' . count($arrUsers) . ' cliente(s)');
+
+                    if (count($arrUsers) >= 0) {
+                        $this->sendOutput(200, $arrUsers, [], 'Se cargó(aron) ' . count($arrUsers) . ' cliente(s)');
+                    } else {
+                        $this->sendOutput(204, $arrUsers, ["No content"], 'No existen registros bajo el requerimiento /' . $UrlPaths[0] . "/" . $clave);
+                    }
                 } catch (Error $e) {
                     $this->sendOutput(500, [], ['Internal Server Error - ' . $e->getMessage()], 'Detalles: ' . $e->getMessage());
                 }
@@ -53,7 +58,12 @@ class UserController extends BaseController
                             $this->sendOutput(422, [], ['Unprocessable Entity'], 'No fue especificado el lugar para alojar la entidad');
                             break;
                     }
-                    $this->sendOutput(200, $arrUsers, [], 'Se insertó(aron) ' . $arrUsers . ' registro(s) en el entorno ' . $path);
+
+                    if ($arrUsers >= 0) {
+                        $this->sendOutput(201, $data, ["Entities created succesfully"], 'Se insertó(aron) ' . $arrUsers . ' registro(s) en el entorno ' . $path);
+                    } else {
+                        $this->sendOutput(400, [], ["Bad Request"], "Error del requerimiento en el entorno $path");
+                    }
                 } catch (Error $e) {
                     $this->sendOutput(500, [], ['Internal Server Error - ' . $e->getMessage()], 'Detalles: ' . $e->getMessage());
                 }
@@ -79,7 +89,12 @@ class UserController extends BaseController
                             $this->sendOutput(422, [], ['Unprocessable Entity'], 'No fue especificado el lugar para alojar la entidad');
                             break;
                     }
-                    $this->sendOutput(200, $arrUsers, [], (($arrUsers >= 0) ? "Se ha actualizado el registro " . $parametro . " en el entorno " . $path : "Error en la actualización del registro " . $parametro . " en el entorno " . $path));
+
+                    if ($arrUsers >= 0) {
+                        $this->sendOutput(201, $data, ["Entity modified succesfully"], "Se ha actualizado el registro " . $parametro . " en el entorno " . $path);
+                    } else {
+                        $this->sendOutput(400, [], ["Bad Request"], "Error del requerimiento en el entorno $path");
+                    }
                 } catch (Error $e) {
                     $this->sendOutput(500, [], ['Internal Server Error - ' . $e->getMessage()], 'Detalles: ' . $e->getMessage());
                 }
@@ -92,7 +107,12 @@ class UserController extends BaseController
                     $columna = $UrlPaths[1];
                     $parametro = $UrlPaths[2];
                     $arrUsers = $userModel->_eliminarRegistro($path, $columna, $parametro);
-                    $this->sendOutput(200, $arrUsers, [], (($arrUsers >= 0) ? "Se ha actualizado el registro " . $parametro . " en el entorno " . $path : "Error en la actualización del registro " . $parametro . " en el entorno " . $path));
+
+                    if ($arrUsers >= 0) {
+                        $this->sendOutput(204, [], ["Entity has been remoded succesfully"], "Se ha eliminado el registro " . $parametro . " en el entorno " . $path);
+                    } else {
+                        $this->sendOutput(400, [], ["Bad Request"], "Error del requerimiento en el entorno $path");
+                    }
                 } catch (Error $e) {
                     $this->sendOutput(500, [], ['Internal Server Error - ' . $e->getMessage()], 'Detalles: ' . $e->getMessage());
                 }
