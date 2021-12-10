@@ -1,7 +1,7 @@
 <?php
 class UserController extends BaseController
 {
-
+    
     /**
      * Handle HTTP requests
      * 
