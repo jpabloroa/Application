@@ -151,8 +151,8 @@ class UserModel extends Database
             $sql = "UPDATE visitas SET ";
             $k = 0;
             foreach ($keys as $key) {
-                $sql .= $key . " = `" . $params[$key] . "`";
-                if ($k <= count($keys) - 1) {
+                $sql .=  $key . " = '" . $params[$key] . "'";
+                if ($k <= count($keys) - 2) {
                     $sql .= ", ";
                 }
                 $k++;
@@ -174,8 +174,8 @@ class UserModel extends Database
             $sql = "UPDATE equipo SET ";
             $k = 0;
             foreach ($keys as $key) {
-                $sql .= $key . " = `" . $params[$key] . "`";
-                if ($k <= count($keys) - 1) {
+                $sql .=  $key . " = '" . $params[$key] . "'";
+                if ($k <= count($keys) - 2) {
                     $sql .= ", ";
                 }
                 $k++;

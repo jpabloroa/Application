@@ -92,13 +92,9 @@ class Database
             }
 
             $stmt->execute();
-
-            if ($stmt == TRUE) {
-                return $params;
-            } else {
-                return null;
-            }
             $stmt->close();
+
+            return $this->connection->affected_rows;
         } catch (Exception $e) {
             throw new Exception($e->getMessage());
         }
@@ -115,13 +111,9 @@ class Database
             }
 
             $stmt->execute();
-
-            if ($stmt == TRUE) {
-                return $stmt;
-            } else {
-                return null;
-            }
             $stmt->close();
+
+            return $this->connection->affected_rows;
         } catch (Exception $e) {
             throw new Exception($e->getMessage());
         }
@@ -144,8 +136,9 @@ class Database
             }
 
             $stmt->execute();
+            $stmt->close();
 
-            return $stmt;
+            return $this->connection->affected_rows;
         } catch (Exception $e) {
             throw new Exception($e->getMessage());
         }
