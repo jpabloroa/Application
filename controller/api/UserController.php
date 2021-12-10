@@ -106,6 +106,12 @@ class UserController extends BaseController
                     $path = $UrlPaths[0];
                     $columna = $UrlPaths[1];
                     $parametro = $UrlPaths[2];
+
+                    if (!isset($parametro) || !$parametro){
+                        $parametro = $columna;
+                        $columna = "cedula";
+                    }
+
                     $arrUsers = $userModel->_eliminarRegistro($path, $columna, $parametro);
 
                     if ($arrUsers >= 0) {
