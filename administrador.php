@@ -1,7 +1,5 @@
 <?php
 
-require __DIR__ . "/config/bootstrap.php";
-
 //
 if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
 
@@ -26,6 +24,7 @@ if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
                     }
                 } else {
 
+                    require __DIR__ . "/config/bootstrap.php";
                     require PROJECT_ROOT_PATH . "/controller/api/UserController.php";
 
                     $objFeedController = new UserController();
@@ -34,6 +33,7 @@ if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
             }
         }
 
+        require __DIR__ . "/config/bootstrap.php";
         require PROJECT_ROOT_PATH . "/controller/api/UserController.php";
         $objFeedController = new UserController();
 
@@ -51,6 +51,7 @@ if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
     }
 } else {
 
+    require __DIR__ . "/config/bootstrap.php";
     require PROJECT_ROOT_PATH . "/controller/api/UserController.php";
 
     //
