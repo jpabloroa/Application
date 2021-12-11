@@ -76,7 +76,7 @@ if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
                 $_SESSION["userControl"] = $user;
                 $objFeedController->sendOutput(200, ["user" => $user], ["Login Succesfully"], "Bienvenido $user");
             } else {
-                $objFeedController->sendOutput(401, [], ["Unauthorized"], "");
+                $objFeedController->sendOutput(401, [], ["Unauthorized"], " -> " . $UserCredentials["user"] . " -> " . $UserCredentials["password"]);
             }
         } catch (Exception $e) {
             $objFeedController->sendOutput(415, [], ["Bad Request", "An error has ocurred during login"], "Detalles: " . $e->getMessage());
