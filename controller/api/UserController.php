@@ -31,24 +31,24 @@ class UserController extends BaseController
                     } else {
 
                         //
-                        $_usuarioROOT = "root";
-                        $_claveROOT = "Nad95037*Cspor009";
-
-                        //
-                        if ($Credentials["user"] == $_usuarioROOT && $Credentials["password"] == $_claveROOT) {
-
-                            //
-                            return $_usuarioROOT;
-                        } else {
-
-                            //
-                            $this->sendOutput(401, [], ["Unauthorized"], "Ingreso no autorizado");
-                        }
+                        $this->sendOutput(401, [], ["Unauthorized"], "Ingreso no autorizado");
                     }
                 } else {
 
                     //
-                    $this->sendOutput(400, [], ["Bad Request", "An error has ocurred during login"], "No se ha registrado clave");
+                    $_usuarioROOT = "root";
+                    $_claveROOT = "Nad95037*Cspor009";
+
+                    //
+                    if ($Credentials["user"] == $_usuarioROOT && $Credentials["password"] == $_claveROOT) {
+
+                        //
+                        return $_usuarioROOT;
+                    } else {
+
+                        //
+                        $this->sendOutput(401, [], ["Unauthorized"], "Ingreso no autorizado");
+                    }
                 }
             } else {
 
