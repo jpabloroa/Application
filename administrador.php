@@ -33,7 +33,7 @@ if (isset($_SESSION["userControl"])) {
 
                     //
                     $objFeedController = new UserController();
-                    $objFeedController->sendDefaultView();
+                    $objFeedController->sendResponse(404, [], ["Not Found"], "");
                 }
             }
         }
@@ -44,7 +44,14 @@ if (isset($_SESSION["userControl"])) {
         if (isset($parsedUri[0]) && $parsedUri[0] != null) {
 
             //
-            $objFeedController->httpMethod($parsedUri);
+            if ($parsedUri[0] == "finalize") {
+
+                //
+                $objFeedController->closeSession();
+            } else {
+                //
+                $objFeedController->httpMethod($parsedUri);
+            }
         } else {
 
             //
@@ -66,18 +73,10 @@ if (isset($_SESSION["userControl"])) {
         $queryString = $urlQuery["key"];
 
         //
-        if ($queryString == "close") {
-
-            //
-            $objFeedController->closeSession();
-        } else {
-
-            //
-            $arrayCredentials = explode(":", $queryString);
-            $UserCredentials["user"] = ($arrayCredentials[0] == null || $arrayCredentials[0] == "") ? null : $arrayCredentials[0];
-            $UserCredentials["password"] = ($arrayCredentials[1] == null || $arrayCredentials[1] == "") ? null : $arrayCredentials[1];
-            $objFeedController->validateCredentials($UserCredentials);
-        }
+        $arrayCredentials = explode(":", $queryString);
+        $UserCredentials["user"] = ($arrayCredentials[0] == null || $arrayCredentials[0] == "") ? null : $arrayCredentials[0];
+        $UserCredentials["password"] = ($arrayCredentials[1] == null || $arrayCredentials[1] == "") ? null : $arrayCredentials[1];
+        $objFeedController->validateCredentials($UserCredentials);
     } else {
         $objFeedController->sendResponse(400, [], ["Bad Request"], "No se ha iniciado sesión");
     }
