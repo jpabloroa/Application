@@ -3,7 +3,9 @@ class UserController extends BaseController
 {
 
     /**
+     * Validates user credentials
      * 
+     * @param array $Credentials
      */
     public function validateCredentials($Credentials = [])
     {
