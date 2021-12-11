@@ -66,7 +66,9 @@ if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
 
             //
             $queryString = $urlQuery["key"];
-            $UserCredentials = explode(":", $queryString);
+            $arrayCredentials = explode(":", $queryString);
+            $UserCredentials["user"] = $arrayCredentials[0];
+            $UserCredentials["password"] = $arrayCredentials[1];
             $user = $objFeedController->validateCredentials($UserCredentials);
             echo "un poco loco";
 
