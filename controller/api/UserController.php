@@ -42,13 +42,13 @@ class UserController extends BaseController
                         } else {
 
                             //
-                            return false;
+                            throw new Exception("-");
                         }
                     }
                 } else {
 
                     //
-                    return false;
+                    throw new Exception("-");
                 }
             } else {
 
@@ -62,7 +62,7 @@ class UserController extends BaseController
         }
 
         //
-        return false;
+        throw new Exception("-");
     }
 
     /**
