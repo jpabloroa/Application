@@ -6,7 +6,7 @@ require __DIR__ . "/config/bootstrap.php";
 session_start();
 
 //
-if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
+if (isset($_SESSION["userControl"])) {
 
     //
     $UserCredentials = $_SESSION["userControl"];
