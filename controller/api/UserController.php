@@ -39,10 +39,11 @@ class UserController extends BaseController
 
                             //
                             return $_usuarioROOT;
-                        }
+                        } else {
 
-                        //
-                        return false;
+                            //
+                            return false;
+                        }
                     }
                 } else {
 
