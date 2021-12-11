@@ -27,7 +27,8 @@ class UserController extends BaseController
                     if ($result["clave"] == $Credentials["password"]) {
 
                         //
-                        return $Credentials["user"];
+                        $_SESSION["userControl"] = $Credentials["user"];
+                        $this->sendOutput(200, ["user" => $Credentials["user"]], ["Login Succesfully"], "Bienvenido " . $Credentials["user"]);
                     } else {
 
                         //
@@ -43,7 +44,7 @@ class UserController extends BaseController
                     if ($Credentials["user"] == $_usuarioROOT && $Credentials["password"] == $_claveROOT) {
 
                         //
-                        return $_usuarioROOT;
+                        $this->sendOutput(200, ["user" => "root"], ["Login Succesfully"], "Bienvenido root");
                     } else {
 
                         //
