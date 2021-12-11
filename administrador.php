@@ -53,6 +53,7 @@ if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
 
     require __DIR__ . "/config/bootstrap.php";
     require PROJECT_ROOT_PATH . "/controller/api/UserController.php";
+    require PROJECT_ROOT_PATH . "/model/UserModel.php";
 
     //
     parse_str($_SERVER['QUERY_STRING'], $urlQuery);
