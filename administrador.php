@@ -60,7 +60,7 @@ if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
     if (isset($urlQuery["key"]) && $urlQuery["key"]) {
 
         //
-        $objFeedController = new UserController();
+        //$objFeedController = new UserController();
 
         //
         try {
