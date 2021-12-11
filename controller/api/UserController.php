@@ -14,7 +14,7 @@ class UserController extends BaseController
 
             //
             $userModel = new UserModel();
-            echo "su puta madre";
+            
             //
             if (isset($Credentials["password"]) && $Credentials["password"]) {
 
