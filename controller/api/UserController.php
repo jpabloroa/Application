@@ -42,27 +42,27 @@ class UserController extends BaseController
                         } else {
 
                             //
-                            throw new Exception("-");
+                            $this->sendOutput(400, [], ["Bad Request", "An error has ocurred during login"], "-");
                         }
                     }
                 } else {
 
                     //
-                    throw new Exception("-");
+                    $this->sendOutput(400, [], ["Bad Request", "An error has ocurred during login"], "-");
                 }
             } else {
 
                 //
-                throw new Exception("No se ha introducido una credencial como clave");
+                $this->sendOutput(400, [], ["Bad Request", "An error has ocurred during login"], "No se ha introducido una credencial como clave");
             }
         } else {
 
             //
-            throw new Exception("No se han introducido credenciales");
+            $this->sendOutput(400, [], ["Bad Request", "An error has ocurred during login"], "No se han introducido credenciales");
         }
 
         //
-        throw new Exception("-");
+        $this->sendOutput(400, [], ["Bad Request", "An error has ocurred during login"], "-");
     }
 
     /**
