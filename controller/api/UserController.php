@@ -14,12 +14,13 @@ class UserController extends BaseController
 
             //
             $userModel = new UserModel();
-            
+
             //
             if (isset($Credentials["password"]) && $Credentials["password"]) {
 
                 //
-                $result = $userModel->getUsers("equipo", ["columna" => "usuario", "clave" => $Credentials["user"]], 1);
+                //$result = $userModel->getUsers("equipo", ["columna" => "usuario", "clave" => $Credentials["user"]], 1);
+                $result = [];
                 if (isset($result["clave"]) && $result["clave"]) {
 
                     //
