@@ -43,7 +43,7 @@ if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
             try {
                 $objFeedController->httpMethod($parsedUri);
             } catch (Exception $e) {
-                echo "Error! detalles:" . $e->getMessage();
+                $objFeedController->sendOutput(400, [], ["Bad Request", "An error has ocurred during login"], "Detalles: " . $e->getMessage());
             }
         } else {
             $objFeedController->sendDefaultView();
@@ -72,11 +72,12 @@ if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
             //
             if (isset($user) && $user) {
                 $_SESSION["userControl"] = $user;
+                $objFeedController->sendOutput(200, ["user" => $user], ["Login Succesfully"], "Bienvenido $user");
             } else {
                 $objFeedController->sendOutput(401, [], ["Unauthorized"], "");
             }
         } catch (Exception $e) {
-            $objFeedController->sendOutput(400, [], ["Bad Request","An error has ocurred during login"], "");
+            $objFeedController->sendOutput(400, [], ["Bad Request", "An error has ocurred during login"], "Detalles: " . $e->getMessage());
         }
     } else {
         $objFeedController = new UserController();
