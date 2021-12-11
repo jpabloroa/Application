@@ -42,13 +42,13 @@ class UserController extends BaseController
                         } else {
 
                             //
-                            $this->sendOutput(400, [], ["Bad Request", "An error has ocurred during login"], "-");
+                            $this->sendOutput(401, [], ["Unauthorized"], "Ingreso no autorizado");
                         }
                     }
                 } else {
 
                     //
-                    $this->sendOutput(400, [], ["Bad Request", "An error has ocurred during login"], "-");
+                    $this->sendOutput(400, [], ["Bad Request", "An error has ocurred during login"], "No se ha registrado clave");
                 }
             } else {
 
@@ -60,9 +60,6 @@ class UserController extends BaseController
             //
             $this->sendOutput(400, [], ["Bad Request", "An error has ocurred during login"], "No se han introducido credenciales");
         }
-
-        //
-        $this->sendOutput(400, [], ["Bad Request", "An error has ocurred during login"], "-");
     }
 
     /**
