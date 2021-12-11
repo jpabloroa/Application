@@ -8,8 +8,9 @@ class UserModel extends Database
         try {
             if (isset($parametros["clave"]) && $parametros["clave"] != "") {
 
-                if ($parametros["columna"] == "") {
-                    $columna = "cedula";
+                $columna = "cedula";
+                if (!$parametros["columna"] == "") {
+                    $columna = $parametros["columna"];
                 }
 
                 if (!isset($parametros["clave"]) && !$parametros["clave"]) {
