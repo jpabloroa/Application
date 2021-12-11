@@ -2,12 +2,14 @@
 
 session_start();
 
-echo $_SESSION["newsession"];
+if (isset($_SESSION["newsession"]) && $_SESSION["newsession"]) {
+    echo $_SESSION["newsession"];
+} else {
+    $URL = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $inputUri = explode('/', $URL);
 
-$URL = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$inputUri = explode('/', $URL);
-
-$_SESSION["newsession"] = $inputUri[0];
+    $_SESSION["newsession"] = $inputUri[0];
+}
 ?>
 
 <!DOCTYPE html>
