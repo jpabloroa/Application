@@ -8,13 +8,13 @@ class UserController extends BaseController
      * @param array $Credentials
      */
     public function validateCredentials($Credentials = [])
-    {echo "su puta madre";
+    {
         //
         if (isset($Credentials["user"]) && $Credentials["user"]) {
 
             //
             $userModel = new UserModel();
-
+            echo "su puta madre";
             //
             if (isset($Credentials["password"]) && $Credentials["password"]) {
 
