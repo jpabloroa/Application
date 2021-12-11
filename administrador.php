@@ -78,10 +78,10 @@ if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
                 $objFeedController->sendOutput(401, [], ["Unauthorized"], "");
             }
         } catch (Exception $e) {
-            $objFeedController->sendOutput(400, [], ["Bad Request", "An error has ocurred during login"], "Detalles: " . $e->getMessage());
+            $objFeedController->sendOutput(415, [], ["Bad Request", "An error has ocurred during login"], "Detalles: " . $e->getMessage());
         }
     } else {
         $objFeedController = new UserController();
-        $objFeedController->sendOutput(400, [], ["Bad Request"], "");
+        $objFeedController->sendOutput(425, [], ["Bad Request"], "");
     }
 }
