@@ -44,7 +44,8 @@ class UserController extends BaseController
                     if ($Credentials["user"] == $_usuarioROOT && $Credentials["password"] == $_claveROOT) {
 
                         //
-                        $this->sendOutput(200, ["user" => "root"], ["Login Succesfully"], "Bienvenido root");
+                        $_SESSION["userControl"] = $_usuarioROOT;
+                        $this->sendOutput(200, ["user" => $_usuarioROOT], ["Login Succesfully"], "Bienvenido $_usuarioROOT");
                     } else {
 
                         //
