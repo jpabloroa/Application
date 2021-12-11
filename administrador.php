@@ -66,6 +66,6 @@ if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
         $UserCredentials["password"] = ($arrayCredentials[1] == null || $arrayCredentials[1] == "") ? null : $arrayCredentials[1];
         $user = $objFeedController->validateCredentials($UserCredentials);
     } else {
-        $objFeedController->sendOutput(425, [], ["Bad Request"], "");
+        $objFeedController->sendOutput(400, [], ["Bad Request"], "No se ha iniciado sesión");
     }
 }
