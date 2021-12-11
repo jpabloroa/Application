@@ -6,7 +6,7 @@ class BaseController
      */
     public function __call($name, $arguments)
     {
-        $this->sendOutput(404, ["Constructor"], ["Not Found"], "Recurso no encontrado, llamada a la funcion $name");
+        $this->sendOutput(404, ["Constructor"], ["Not Found"], "Recurso no encontrado, llamada a la funcion $name con los argumentos $arguments");
     }
 
     /**
