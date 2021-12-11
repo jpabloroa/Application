@@ -1,5 +1,7 @@
 <?php
 
+require __DIR__ . "/config/bootstrap.php";
+
 //
 if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
 
@@ -24,34 +26,30 @@ if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
                     }
                 } else {
 
-                    require __DIR__ . "/config/bootstrap.php";
                     require PROJECT_ROOT_PATH . "/controller/api/UserController.php";
 
+                    //
                     $objFeedController = new UserController();
                     $objFeedController->sendDefaultView();
                 }
             }
         }
 
-        require __DIR__ . "/config/bootstrap.php";
         require PROJECT_ROOT_PATH . "/controller/api/UserController.php";
         $objFeedController = new UserController();
 
         if (isset($parsedUri[0]) && $parsedUri[0] != null) {
 
             //
-            try {
-                $objFeedController->httpMethod($parsedUri);
-            } catch (Exception $e) {
-                $objFeedController->sendOutput(400, [], ["Bad Request", "An error has ocurred during login"], "Detalles: " . $e->getMessage());
-            }
+            $objFeedController->httpMethod($parsedUri);
         } else {
+
+            //
             $objFeedController->sendDefaultView();
         }
     }
 } else {
 
-    require __DIR__ . "/config/bootstrap.php";
     require PROJECT_ROOT_PATH . "/controller/api/UserController.php";
 
     //
@@ -62,25 +60,11 @@ if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
     if (isset($urlQuery["key"]) && $urlQuery["key"]) {
 
         //
-        try {
-
-            //
-            $queryString = $urlQuery["key"];
-            $arrayCredentials = explode(":", $queryString);
-            $UserCredentials["user"] = ($arrayCredentials[0] == null || $arrayCredentials[0] == "") ? null : $arrayCredentials[0];
-            $UserCredentials["password"] = ($arrayCredentials[1] == null || $arrayCredentials[1] == "") ? null : $arrayCredentials[1];
-            $user = $objFeedController->validateCredentials($UserCredentials);
-
-            //
-            if (isset($user) && $user) {
-                $_SESSION["userControl"] = $user;
-                $objFeedController->sendOutput(200, ["user" => $user], ["Login Succesfully"], "Bienvenido $user");
-            } else {
-                $objFeedController->sendOutput(401, [], ["Unauthorized"], " -> " . $UserCredentials["user"] . " -> " . $UserCredentials["password"]);
-            }
-        } catch (Exception $e) {
-            $objFeedController->sendOutput(415, [], ["Bad Request", "An error has ocurred during login"], "Detalles: " . $e->getMessage());
-        }
+        $queryString = $urlQuery["key"];
+        $arrayCredentials = explode(":", $queryString);
+        $UserCredentials["user"] = ($arrayCredentials[0] == null || $arrayCredentials[0] == "") ? null : $arrayCredentials[0];
+        $UserCredentials["password"] = ($arrayCredentials[1] == null || $arrayCredentials[1] == "") ? null : $arrayCredentials[1];
+        $user = $objFeedController->validateCredentials($UserCredentials);
     } else {
         $objFeedController->sendOutput(425, [], ["Bad Request"], "");
     }
