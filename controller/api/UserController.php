@@ -19,8 +19,9 @@ class UserController extends BaseController
             if (isset($Credentials["password"]) && $Credentials["password"]) {
 
                 //
-                //$result = $userModel->getUsers("equipo", ["columna" => "usuario", "clave" => $Credentials["user"]], 1);
-                $result = [];
+                $result = $userModel->getUsers("equipo", ["columna" => "usuario", "clave" => $Credentials["user"]], 1);
+
+                //
                 if (isset($result["clave"]) && $result["clave"]) {
 
                     //
@@ -62,6 +63,16 @@ class UserController extends BaseController
             //
             $this->sendOutput(400, [], ["Bad Request", "An error has ocurred during login"], "No se han introducido credenciales");
         }
+    }
+
+    /**
+     * 
+     */
+    public function closeSession()
+    {
+        $user = $_SESSION["userControl"];
+        unset($_SESSION["userControl"]);
+        $this->sendOutput(200, ["user" => $user], ["Session closed succesfully"], "Sesión cerrada exitosamente");
     }
 
     /**

@@ -64,10 +64,20 @@ if (isset($_SESSION["userControl"])) {
 
         //
         $queryString = $urlQuery["key"];
-        $arrayCredentials = explode(":", $queryString);
-        $UserCredentials["user"] = ($arrayCredentials[0] == null || $arrayCredentials[0] == "") ? null : $arrayCredentials[0];
-        $UserCredentials["password"] = ($arrayCredentials[1] == null || $arrayCredentials[1] == "") ? null : $arrayCredentials[1];
-        $objFeedController->validateCredentials($UserCredentials);
+
+        //
+        if ($queryString == "close") {
+
+            //
+            $objFeedController->closeSession();
+        } else {
+
+            //
+            $arrayCredentials = explode(":", $queryString);
+            $UserCredentials["user"] = ($arrayCredentials[0] == null || $arrayCredentials[0] == "") ? null : $arrayCredentials[0];
+            $UserCredentials["password"] = ($arrayCredentials[1] == null || $arrayCredentials[1] == "") ? null : $arrayCredentials[1];
+            $objFeedController->validateCredentials($UserCredentials);
+        }
     } else {
         $objFeedController->sendResponse(400, [], ["Bad Request"], "No se ha iniciado sesión");
     }
