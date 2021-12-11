@@ -1,15 +1,14 @@
 <?php
-
 session_start();
 
-if (isset($_SESSION["newsession"]) && $_SESSION["newsession"]) {
-    echo $_SESSION["newsession"];
+if (isset($_SESSION['counter'])) {
+    $_SESSION['counter'] += 1;
 } else {
-    $URL = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    $inputUri = explode('/', $URL);
-
-    $_SESSION["newsession"] = $inputUri[0];
+    $_SESSION['counter'] = 1;
 }
+
+$msg = "You have visited this page " .  $_SESSION['counter'];
+$msg .= "in this session.";
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +24,7 @@ if (isset($_SESSION["newsession"]) && $_SESSION["newsession"]) {
 
 <body>
     <?php
-    echo "primero que nada, primero que todo";
+    echo $msg;
     ?>
     <h1>Página de inicio</h1>
     <div id="reader" style="width:200px;height:auto;"></div>
