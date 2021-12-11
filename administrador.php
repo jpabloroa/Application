@@ -48,7 +48,7 @@ if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
         } else {
 
             //
-            $objFeedController->sendDefaultView();
+            $objFeedController->sendResponse(404, [], ["Not Found"], "");
         }
     }
 } else {
@@ -67,8 +67,8 @@ if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
         $arrayCredentials = explode(":", $queryString);
         $UserCredentials["user"] = ($arrayCredentials[0] == null || $arrayCredentials[0] == "") ? null : $arrayCredentials[0];
         $UserCredentials["password"] = ($arrayCredentials[1] == null || $arrayCredentials[1] == "") ? null : $arrayCredentials[1];
-        $user = $objFeedController->validateCredentials($UserCredentials);
+        $objFeedController->validateCredentials($UserCredentials);
     } else {
-        $objFeedController->sendOutput(400, [], ["Bad Request"], "No se ha iniciado sesión");
+        $objFeedController->sendResponse(400, [], ["Bad Request"], "No se ha iniciado sesión");
     }
 }

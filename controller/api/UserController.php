@@ -228,6 +228,11 @@ class UserController extends BaseController
         }
     }
 
+    public function sendResponse($status = 0, $datos = [], $httpHeaders = [], $info = "")
+    {
+        $this->sendOutput($status, $datos, $httpHeaders, $info);
+    }
+
     public function nuevoCliente()
     {
         $requestMethod = $_SERVER["REQUEST_METHOD"];
