@@ -51,8 +51,8 @@ if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
     }
 } else {
 
-    require __DIR__ . "/config/bootstrap.php";
-    require PROJECT_ROOT_PATH . "/controller/api/UserController.php";
+    require_once __DIR__ . "/config/bootstrap.php";
+    require_once PROJECT_ROOT_PATH . "/controller/api/UserController.php";
 
     //
     parse_str($_SERVER['QUERY_STRING'], $urlQuery);
