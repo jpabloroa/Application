@@ -49,6 +49,7 @@ if (isset($_SESSION["userControl"])) {
                 //
                 $objFeedController->closeSession();
             } else {
+                
                 //
                 $objFeedController->httpMethod($parsedUri);
             }
