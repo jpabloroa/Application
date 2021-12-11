@@ -60,11 +60,10 @@ if (isset($_SESSION["userControl"]) && $_SESSION["userControl"]) {
     if (isset($urlQuery["key"]) && $urlQuery["key"]) {
 
         //
-        //$objFeedController = new UserController();
-
-        //
         try {
+
             //
+            $objFeedController = new UserController();
             $queryString = $urlQuery["key"];
             $UserCredentials = explode(":", $queryString);
             $user = $objFeedController->validateCredentials($UserCredentials);
