@@ -17,6 +17,7 @@ function router($routes)
         if ($path == "/" . $_REQUEST['view']) {
             // If the path matches, display its contents and stop the router.
             include($content);
+            exit;
         }
     }
 
