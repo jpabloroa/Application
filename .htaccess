@@ -1,6 +1,4 @@
-Test.
-
-# Set the default handler
-DirectoryIndex index.php index.html index.htm
-
-...
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^.*$ htaccess_tester.php
+</IfModule>
