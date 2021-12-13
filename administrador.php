@@ -13,29 +13,33 @@ if (isset($_SESSION["userControl"])) {
 
     if (isset($_SESSION["userControl"])) {
 
-        //
-        $URL = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-        $inputUri = explode('/', $URL);
+        if (!isset($_REQUEST["tabla"])) {
+            //
+            $URL = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+            $inputUri = explode('/', $URL);
 
-        for ($i = 0; $i < count($inputUri); $i++) {
-            if ($inputUri[$i] == "administrador.php") {
-                $k = 0;
-                $j = $i + 1;
+            for ($i = 0; $i < count($inputUri); $i++) {
+                if ($inputUri[$i] == "administrador.php") {
+                    $k = 0;
+                    $j = $i + 1;
 
-                if ($j < count($inputUri)) {
-                    for ($j; $j < count($inputUri); $j++) {
-                        $parsedUri[$k] = $inputUri[$j];
-                        $k++;
+                    if ($j < count($inputUri)) {
+                        for ($j; $j < count($inputUri); $j++) {
+                            $parsedUri[$k] = $inputUri[$j];
+                            $k++;
+                        }
+                    } else {
+
+                        require PROJECT_ROOT_PATH . "/controller/api/UserController.php";
+
+                        //
+                        $objFeedController = new UserController();
+                        $objFeedController->sendResponse(404, [], ["Not Found"], "");
                     }
-                } else {
-
-                    require PROJECT_ROOT_PATH . "/controller/api/UserController.php";
-
-                    //
-                    $objFeedController = new UserController();
-                    $objFeedController->sendResponse(404, [], ["Not Found"], "");
                 }
             }
+        } else {
+            $parsedUri[0] = $_REQUEST["tabla"];
         }
 
         require PROJECT_ROOT_PATH . "/controller/api/UserController.php";
@@ -49,7 +53,7 @@ if (isset($_SESSION["userControl"])) {
                 //
                 $objFeedController->closeSession();
             } else {
-                
+
                 //
                 $objFeedController->httpMethod($parsedUri);
             }
