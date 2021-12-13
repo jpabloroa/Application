@@ -1,2 +1,2 @@
 <?php
-echo "Regular madafaca";
+echo "Regular madafaca el path es " . $_REQUEST["view"];
