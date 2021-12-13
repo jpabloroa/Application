@@ -1,6 +1,4 @@
-RewriteEngine On
-RewriteBase /
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+Test.
 
-RewriteRule ^(.+)$ inicio.php?uri=$1 [QSA,L]
+# Set the default handler
+DirectoryIndex index.php index.html index.htm
