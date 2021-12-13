@@ -4,8 +4,8 @@
 // We could put this in a different file and include it in order to separate
 // logic and configuration.
 $routes = [
-    '/'      => '/administrador.php/clientes/',
-    '/hello' => '/perico.php',
+    '/'      => 'administrador.php/clientes/',
+    '/hello' => 'perico.php',
     '/users' => 'Users!'
 ];
 
