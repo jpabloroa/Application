@@ -1,4 +1,4 @@
 <?php
-echo $_SERVER["REQUEST_URI"];
-echo $_SERVER['PATH_INFO'];
+echo $_SERVER["REQUEST_URI"]."<br>";
+echo $_SERVER['PATH_INFO']."<br>";
 echo $_SERVER["uri"];
