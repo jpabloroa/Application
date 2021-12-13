@@ -4,7 +4,7 @@
 // We could put this in a different file and include it in order to separate
 // logic and configuration.
 $routes = [
-    "/ " => "/administrador/clientes/",
+    "//" => "/administrador/clientes/",
     "/hello" => "/perico.php",
     "error_404" => "/pages/error_page.php?error=404"
 ];
