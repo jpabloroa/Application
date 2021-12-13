@@ -239,6 +239,8 @@ class UserController extends BaseController
         }
     }
 
+    
+
     /**
      * Send JSON response to user
      * 
@@ -250,43 +252,5 @@ class UserController extends BaseController
     public function sendResponse($status = 0, $datos = [], $httpHeaders = [], $info = "")
     {
         $this->sendOutput($status, $datos, $httpHeaders, $info);
-    }
-
-    public function nuevoCliente()
-    {
-        $requestMethod = $_SERVER["REQUEST_METHOD"];
-        $arrQueryStringParams = $this->getQueryStringParams();
-
-        switch (strtoupper($requestMethod)) {
-            case 'GET':
-                try {
-                    $userModel = new UserModel();
-
-                    $intLimit = 100;
-                    if (isset($arrQueryStringParams['limit']) && $arrQueryStringParams['limit']) {
-                        $intLimit = $arrQueryStringParams['limit'];
-                    }
-
-                    $arrUsers = $userModel->getUsers($intLimit);
-                    $this->sendOutput(200, $arrUsers, [], 'Se cargó(aron) ' . count($arrUsers) . ' cliente(s)');
-                } catch (Error $e) {
-                    $this->sendOutput(500, [], ['Internal Server Error - ' . $e->getMessage()], 'Detalles: ' . $e->getMessage());
-                }
-                break;
-            case 'POST':
-                try {
-                    $userModel = new UserModel();
-
-                    $arrUsers = json_decode(file_get_contents('php://input'), true);
-
-                    $this->sendOutput(200, $arrUsers, [], 'Se cargó(aron) ' . count($arrUsers) . ' cliente(s)');
-                } catch (Error $e) {
-                    $this->sendOutput(500, [], ['Internal Server Error - ' . $e->getMessage()], 'Detalles: ' . $e->getMessage());
-                }
-                break;
-            default:
-                $this->sendOutput(422, [], ['Unprocessable Entity'], 'Método ' . $requestMethod . ' no definido');
-                break;
-        }
     }
 }
