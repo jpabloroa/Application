@@ -15,7 +15,7 @@ include "routes.php";
  */
 
 //define your route. This is main page route. for example www.example.com
-Route::add('/', function(){
+Route::add('/hallo', function(){
 
     //define which page you want to display while user hit main page. 
     echo "perico pico";
