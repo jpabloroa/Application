@@ -14,7 +14,7 @@ function router($routes)
 {
     // Iterate through a given list of routes.
     foreach ($routes as $path => $content) {
-        if ($path == $_REQUEST['view']) {
+        if ($path == "/" . $_REQUEST['view']) {
             // If the path matches, display its contents and stop the router.
             include($content);
         }
