@@ -66,7 +66,7 @@ class UserController extends BaseController
     }
 
     /**
-     * 
+     * Finalice session
      */
     public function closeSession()
     {
@@ -239,6 +239,14 @@ class UserController extends BaseController
         }
     }
 
+    /**
+     * Send JSON response to user
+     * 
+     * @param int $status
+     * @param array $datos
+     * @param array $httpHeaders
+     * @param string $info
+     */
     public function sendResponse($status = 0, $datos = [], $httpHeaders = [], $info = "")
     {
         $this->sendOutput($status, $datos, $httpHeaders, $info);
