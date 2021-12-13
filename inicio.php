@@ -1,50 +1,28 @@
-<?php 
+<?php
 
+// First, let's define our list of routes.
+// We could put this in a different file and include it in order to separate
+// logic and configuration.
+$routes = [
+    '/'      => '/administrador.php/clientes/',
+    '/hello' => 'Hello, World!',
+    '/users' => 'Users!'
+];
 
+// This is our router.
+function router($routes)
+{
+    // Iterate through a given list of routes.
+    foreach ($routes as $path => $content) {
+        if ($path == $_REQUEST['view']) {
+            // If the path matches, display its contents and stop the router.
+            include($content);
+        }
+    }
 
-include "routes.php";
+    // This can only be reached if none of the routes matched the path.
+    echo 'Sorry! Page not found';
+}
 
-
-
-
-
-/**
- * -----------------------------------------------
- * PHP Route Things
- * -----------------------------------------------
- */
-
-//define your route. This is main page route. for example www.example.com
-Route::add('/hallo', function(){
-
-    //define which page you want to display while user hit main page. 
-    echo "perico pico";
-    //include('administrador.php/clientes/');
-});
-
-
-// route for www.example.com/join
-Route::add('/join', function(){
-    include('join.php');
-});
-
-Route::add('/login', function(){
-    include('login.php');
-});
-
-Route::add('/forget', function(){
-    include('forget.php');
-});
-
-
-
-Route::add('/logout', function(){
-    include('logout.php');
-});
-
-
-
-
-
-//method for execution routes    
-Route::submit();
+// Execute the router with our list of routes.
+router($routes);
