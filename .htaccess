@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteRule ^.*$ perico.php
+    RewriteRule ^(.+)$ perico.php?uri=$1
 </IfModule>
 
 #<IfModule mod_rewrite.c>
