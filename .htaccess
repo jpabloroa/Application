@@ -1,6 +1,0 @@
-RewriteEngine On
-RewriteBase /proyectos/Application/
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-
-RewriteRule ^(.+)$ inicio.php?uri=$1 [QSA,L]
