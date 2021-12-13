@@ -4,9 +4,9 @@
 // We could put this in a different file and include it in order to separate
 // logic and configuration.
 $routes = [
-    '/'      => 'administrador.php/clientes/',
-    '/hello' => 'perico.php',
-    '/users' => 'Users!'
+    "/" => "administrador/clientes/",
+    "/hello" => "perico.php",
+    "error_404" => "pages/error_page.php?error=404"
 ];
 
 // This is our router.
@@ -14,7 +14,7 @@ function router($routes)
 {
     // Iterate through a given list of routes.
     foreach ($routes as $path => $content) {
-        if ($path == "/" . $_REQUEST['view']) {
+        if ($path == "/" . $_REQUEST["view"]) {
             // If the path matches, display its contents and stop the router.
             include($content);
             exit;
@@ -22,7 +22,7 @@ function router($routes)
     }
 
     // This can only be reached if none of the routes matched the path.
-    echo 'Sorry! Page not found';
+    include($routes["error_404"]);
 }
 
 // Execute the router with our list of routes.
