@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /php/cfc/
+RewriteBase /proyectos/Application
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
