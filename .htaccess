@@ -1,13 +1,13 @@
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteRule ^.*$ htaccess_tester.php
-</IfModule>
-
 #<IfModule mod_rewrite.c>
-#RewriteEngine On
-#RewriteBase /php/cfc/
-#RewriteCond %{REQUEST_FILENAME} !-f
-#RewriteCond %{REQUEST_FILENAME} !-d
-
-#RewriteRule ^(.+)$ inicio.php?uri=$1 [QSA,L]
+#    RewriteEngine On
+#    RewriteRule ^.*$ htaccess_tester.php
 #</IfModule>
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /php/cfc/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.+)$ perico.php?uri=$1 [QSA,L]
+</IfModule>
