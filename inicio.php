@@ -5,7 +5,7 @@
 // logic and configuration.
 $routes = [
     '/'      => '/administrador.php/clientes/',
-    '/hello' => 'Hello, World!',
+    '/hello' => '/perico.php',
     '/users' => 'Users!'
 ];
 
