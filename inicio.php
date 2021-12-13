@@ -18,7 +18,7 @@ include "route.php";
 Route::add('/', function(){
 
     //define which page you want to display while user hit main page. 
-    include('myindex.php');
+    include('administrador.php/clientes/');
 });
 
 
