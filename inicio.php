@@ -2,7 +2,7 @@
 
 
 
-include "route.php";
+include "routes.php";
 
 
 
@@ -18,7 +18,8 @@ include "route.php";
 Route::add('/', function(){
 
     //define which page you want to display while user hit main page. 
-    include('administrador.php/clientes/');
+    echo "perico pico";
+    //include('administrador.php/clientes/');
 });
 
 
