@@ -1,4 +1,4 @@
-DirectoryIndex inicio.php?view=
+DirectoryIndex inicio.php?view=inicio
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
