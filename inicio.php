@@ -4,9 +4,9 @@
 // We could put this in a different file and include it in order to separate
 // logic and configuration.
 $routes = [
-    "//" => "/administrador/clientes/",
+    "/" => "/ads",
     "/hello" => "/perico.php",
-    "error_404" => "/pages/error_page.php?error=404"
+    "error_404" => "/pages/error_page.php"
 ];
 
 // This is our router.
@@ -14,6 +14,7 @@ function router($routes)
 {
     // Iterate through a given list of routes.
     foreach ($routes as $path => $content) {
+
         if ($path == "/" . $_REQUEST["view"]) {
             include(__DIR__ . $content);
             exit;
